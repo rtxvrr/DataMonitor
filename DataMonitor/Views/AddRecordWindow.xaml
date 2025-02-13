@@ -1,0 +1,43 @@
+﻿<Window x:Class="DataMonitor.Views.AddRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataMonitor.Views"
+        mc:Ignorable="d"
+        Title="Добавить запись" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Номер машины:" Grid.Row="0" Grid.Column="0" Margin="5"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" IsEditable="True"
+                  ItemsSource="{Binding ExistingMachineNumbers}"
+                  Text="{Binding MachineNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Вес брутто:" Grid.Row="1" Grid.Column="0" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding GrossWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Вес тары:" Grid.Row="2" Grid.Column="0" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding TareWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Вес нетто:" Grid.Row="3" Grid.Column="0" Margin="5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding NetWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Дата тары:" Grid.Row="4" Grid.Column="0" Margin="5"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" Margin="5" SelectedDate="{Binding TareDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Дата брутто:" Grid.Row="5" Grid.Column="0" Margin="5"/>
+        <DatePicker Grid.Row="5" Grid.Column="1" Margin="5" SelectedDate="{Binding GrossDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Добавить" Width="100" Margin="5" Command="{Binding AddRecordCommand}"/>
+            <Button Content="Отмена" Width="100" Margin="5" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
